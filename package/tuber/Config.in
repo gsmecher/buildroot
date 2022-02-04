@@ -1,0 +1,7 @@
+config BR2_PACKAGE_TUBER
+	bool "tuber"
+	depends on BR2_PACKAGE_PYTHON_PYBIND_JSON
+	help
+	  Tuber seamlessly exposes Python (or native C++) code across a LAN, using something like JSON-RPC.
+
+	  https://github.com/gsmecher/tuber
