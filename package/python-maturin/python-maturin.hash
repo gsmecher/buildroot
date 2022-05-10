@@ -1,0 +1,5 @@
+# Locally calculated after vendoring
+sha256  092db51dfd1479e3abfc8eef4b109b6ab504481959e383090827e2024f09aab3  maturin-0.12.15.tar.gz
+# Locally computed sha256 checksums
+sha256  a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2  license-apache
+sha256  ea7882c559733766ad08343bde1d1ec80a4967c03a738fb8e0058ef6289f7b7c  license-mit

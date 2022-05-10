@@ -1,0 +1,62 @@
+From 9ad69941d02e494d45ee67f3bcccc83c0bb4cdcd Mon Sep 17 00:00:00 2001
+From: James Hilliard <james.hilliard1@gmail.com>
+Date: Mon, 9 May 2022 14:37:36 -0600
+Subject: [PATCH] Fix invalid pyproject.toml
+
+These attributes should be marked dynamic.
+
+Fixes:
+configuration error: `project` must contain ['version'] properties
+
+Fixes:
+The following seems to be defined outside of `pyproject.toml`:
+
+`description = 'Build and publish crates with pyo3, rust-cpython and cffi bindings as well as rust binaries as python packages'`
+
+According to the spec (see the link bellow), however, setuptools CANNOT
+consider this value unless 'description' is listed as `dynamic`.
+
+Fixes:
+The following seems to be defined outside of `pyproject.toml`:
+
+`license = 'MIT OR Apache-2.0'`
+
+According to the spec (see the link bellow), however, setuptools CANNOT
+consider this value unless 'license' is listed as `dynamic`.
+
+Fixes:
+The following seems to be defined outside of `pyproject.toml`:
+
+`authors = 'konstin'`
+
+According to the spec (see the link bellow), however, setuptools CANNOT
+consider this value unless 'authors' is listed as `dynamic`.
+
+Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
+[james.hilliard1@gmail.com: backport from upstream commit
+9ad69941d02e494d45ee67f3bcccc83c0bb4cdcd]
+---
+ pyproject.toml | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 207ceb7..329faae 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -13,6 +13,13 @@ classifiers = [
+     "Programming Language :: Python :: Implementation :: PyPy",
+ ]
+ dependencies = ["tomli>=1.1.0 ; python_version<'3.11'"]
++dynamic = [
++    "authors",
++    "description",
++    "license",
++    "readme",
++    "version"
++]
+ 
+ [project.optional-dependencies]
+ zig = [
+-- 
+2.25.1
+
